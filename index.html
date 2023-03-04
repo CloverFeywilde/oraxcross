@@ -1,0 +1,24 @@
+<!--
+    OraxCross - Trading Card Game
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OraxCross</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script src="pixi.min.js"></script>
+    <script type="module" src="main.js"></script>
+    <script>
+        console.log(PIXI);
+        let type = "WebGL";
+        if (!PIXI.utils.isWebGLSupported()) {
+            type = "canvas";
+        }
+        PIXI.utils.sayHello(type);
+    </script>
+</body>
+</html>
