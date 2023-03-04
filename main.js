@@ -6,26 +6,36 @@
 */
 
 //I just copied YTTD's aspect ratio. Will fix later
-let app = new PIXI.Application({ width: 816, height: 624 });
+let app = new PIXI.Application({ width: 816, height: 800, backgroundColor: 0x90a8c3});
 document.body.appendChild(app.view);
 
-let text = new PIXI.Text('Hello World',{
-    fontFamily:'Arial',
-    fontSize: 24,
-    fill : 0xff1010,
-    align : 'center',
-});
-
-
-var graphics = new PIXI.Graphics();
-graphics.beginFill(0xFFFF00);
-// set the line style to have a width of 5 and set the color to red
-graphics.lineStyle(5, 0xFF0000);
-// draw a rectangle
-graphics.drawRect(0, 0, 300, 200);
-
-app.stage.addChild(text);
+let graphics = new PIXI.Graphics();
 app.stage.addChild(graphics);
+graphics.beginFill(0xf4cae0);
+graphics.lineStyle(3, 0xFFFFFF);
+graphics.drawRect(358, 525, 100, 150);
+graphics.drawRect(358, 125, 100, 150);
+
+let graphics2 = new PIXI.Graphics();
+app.stage.addChild(graphics2);
+graphics2.beginFill(0xfcf6bd);
+graphics2.lineStyle(2, 0xFFFFFF);
+graphics2.drawRect(160, 40, 150, 100);
+graphics2.drawRect(160, 255, 150, 100);
+graphics2.drawRect(160, 445, 150, 100);
+graphics2.drawRect(160, 660, 150, 100);
+graphics2.drawRect(495, 40, 150, 100);
+graphics2.drawRect(495, 255, 150, 100);
+graphics2.drawRect(495, 445, 150, 100);
+graphics2.drawRect(495, 660, 150, 100);
+
+let graphics3 = new PIXI.Graphics();
+app.stage.addChild(graphics3);
+graphics3.position.set(0,0);
+graphics3.lineStyle(15, 0xFFFFFF)
+.moveTo(0,400)
+.lineTo(816,400);
+
 
 //Asset Containers
 
