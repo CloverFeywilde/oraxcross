@@ -15,8 +15,17 @@ let text = new PIXI.Text('Hello World',{
     fill : 0xff1010,
     align : 'center',
 });
-app.stage.addChild(text);
 
+
+var graphics = new PIXI.Graphics();
+graphics.beginFill(0xFFFF00);
+// set the line style to have a width of 5 and set the color to red
+graphics.lineStyle(5, 0xFF0000);
+// draw a rectangle
+graphics.drawRect(0, 0, 300, 200);
+
+app.stage.addChild(text);
+app.stage.addChild(graphics);
 
 //Asset Containers
 
