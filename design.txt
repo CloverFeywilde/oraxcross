@@ -1,0 +1,70 @@
+***OraxCross Design Notes***
+~added by Clover~
+
+Minimum Viable Product 1:
+Create a basic manual simulation for the OraxCross card game that will include the following functionality:
+
+- Create/adjust the UI for a hand of cards
+- Create/adjust the UI to display card art/text
+- Shuffling a pre-assembled deck of cards.
+- Drawing the cards into a hand
+- Inspect any card in the hand or on the field to see it's artwork and effect
+- Create a flow process for selecting a card in hand, and playing it to a zone, sending it back to the deck to shuffle,  or discarding it
+- Create a flow process for selecting a card on the field and returning it to the deck to shuffle, adding it back to the hand, or discarding it
+- Create a flow process for searching a card from the deck and adding it to your hand, discarding it, or placing it on a zone on the field
+- Create a flow process for milling cards in your Reflection Deck (taking damage)
+- Applying a highlight effect to an opponent's card (to notify them you're selecting something for an attack or effect target)
+- Apply a highlight effect to your card or field zones (for when you're activating an effect or being prompted to play something somewhere)
+- Display your Health (Reflection Deck card number) in an easily visible area on the UI
+
+Extra steps for MVP1:
+- Add a background/effect/or slightly animated effect behind the cards (like an elevator effect, falling crystal shards, or water or something) 
+- Add placeholder music. (Free to use game music)
+- Create a few placeholder cards for the deck
+- automate the field positions to allow for screen/window resizing. 
+
+Notes: 
+The rules for OraxCross aren't set in stone, and will change a lot. For this reason we need to keep this iteration as flexible as possible so we can minimize code revisions. 
+The automated TCG logic will come later as we design the cards and test the rules.
+
+
+--File/Data Structure Planning--
+
+CardPool.js - separate file that will hold every card in the game, identified with a unique ID.
+    id - unique ID for each card. (three Digits for the set, 3 for the card number) Example Card ID: aya001
+        title - card title
+        text - human readable card text that is displayed to the user goes here
+        type - card type
+        art - (file link to the card art)
+        attributes- (attributes changes depending on the type of card)
+            rank 
+            element
+    
+FieldController.js - separate file that will hold functions for interacting with the Card Field
+    Field Class - Holds the state of a given player's field and methods for interacting with it. Note: When a match begins, instanciate twice. Once for player and once for opponent. Assign to individual variables and refer to as needed.
+        hand - array that holds the card IDs in a player's current hand
+        deck - array that holds card IDs in current deck. (position 0 = top card)
+        refDeck - reflection deck array.
+        life - integer - remaining life (aka number of cards in your reflection deck)
+        reflection - string ID of active reflection card 
+        facet1 - string ID of active facet card in position 1...
+        facet2 - ...position2
+        facet3 - ...position3
+        facet4 - ...position4
+        discard - array for discard pile
+        //Methods
+        shuffleDeck - method that shuffles deck (deck target)
+        moveCards - move cards from one container to another. Takes 3 parameters (targetArray, destinationArray, numberOfCards)
+        inspect - takes 1 parameter (inspectTarget) retrieves card information from CardPool object and displays to UI (wherever that is)
+
+MatchFlow.js - Holds control flow logic for when we're in the 'Match' gamestate (aka, when we're in duel)
+    match - function that holds the game loop for when we're in a match
+        matchState - function that invokes current match state logic
+            startMatch - builds the field, shuffles the decks, resets all score values, plays card drawing animations, displays (game start) text 
+            open - open game state. User can select any cards in their hand, field, or in their deck(s). Hovering over each card displays the appropriate options (which invokes the screen flow from the field class.)
+            interact - User has selected a card is in the middle of playing/moving it from one place to another. Control flow logic and instructions should guide the user during this state. 
+            deckView - the deck selection menu. Displays the appropriate options when hovering over a given card 
+            inspect - displays card art and full card text 
+            matchPause - displays pause menu options for while in a match. lowers volume while in menu
+            endMatch - displays options to the user that lets them restart the match or go back to home screen    
+
