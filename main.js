@@ -6,35 +6,50 @@
 */
 
 //I just copied YTTD's aspect ratio. Will fix later
+//Nox's Notes! will be marked with an -N 
 let app = new PIXI.Application({ width: 816, height: 800, backgroundColor: 0x90a8c3});
 document.body.appendChild(app.view);
 
-let graphics = new PIXI.Graphics();
-app.stage.addChild(graphics);
-graphics.beginFill(0xf4cae0);
-graphics.lineStyle(3, 0xFFFFFF);
-graphics.drawRect(358, 525, 100, 150);
-graphics.drawRect(358, 125, 100, 150);
-
-let graphics2 = new PIXI.Graphics();
-app.stage.addChild(graphics2);
-graphics2.beginFill(0xfcf6bd);
-graphics2.lineStyle(2, 0xFFFFFF);
-graphics2.drawRect(160, 40, 150, 100);
-graphics2.drawRect(160, 255, 150, 100);
-graphics2.drawRect(160, 445, 150, 100);
-graphics2.drawRect(160, 660, 150, 100);
-graphics2.drawRect(495, 40, 150, 100);
-graphics2.drawRect(495, 255, 150, 100);
-graphics2.drawRect(495, 445, 150, 100);
-graphics2.drawRect(495, 660, 150, 100);
-
-let graphics3 = new PIXI.Graphics();
-app.stage.addChild(graphics3);
-graphics3.position.set(0,0);
-graphics3.lineStyle(15, 0xFFFFFF)
+//separates the field into two. i will refer to the top field as OF (opponent's field) and PF (player field) -N
+let graphicsFieldLine = new PIXI.Graphics();
+app.stage.addChild(graphicsFieldLine);
+graphicsFieldLine.position.set(0,0);
+graphicsFieldLine.lineStyle(15, 0xFFFFFF)
 .moveTo(0,400)
 .lineTo(816,400);
+
+//reflection cards. in order: PFmain, OFmain, PFdeck, OFdeck -N
+let graphicsReflection = new PIXI.Graphics();
+app.stage.addChild(graphicsReflection);
+graphicsReflection.beginFill(0xf4cae0);
+graphicsReflection.lineStyle(3, 0xFFFFFF);
+graphicsReflection.drawRect(358, 525, 100, 150);
+graphicsReflection.drawRect(358, 125, 100, 150);
+graphicsReflection.drawRect(20, 225, 100, 150);
+graphicsReflection.drawRect(696, 425, 100, 150);
+
+//facet cards. ordered by left column, right column, PFdeck, OFdeck -N
+let graphicsFacet = new PIXI.Graphics();
+app.stage.addChild(graphicsFacet);
+graphicsFacet.beginFill(0xfcf6bd);
+graphicsFacet.lineStyle(2, 0xFFFFFF);
+graphicsFacet.drawRect(160, 40, 150, 100);
+graphicsFacet.drawRect(160, 255, 150, 100);
+graphicsFacet.drawRect(160, 445, 150, 100);
+graphicsFacet.drawRect(160, 660, 150, 100);
+graphicsFacet.drawRect(495, 40, 150, 100);
+graphicsFacet.drawRect(495, 255, 150, 100);
+graphicsFacet.drawRect(495, 445, 150, 100);
+graphicsFacet.drawRect(495, 660, 150, 100);
+graphicsFacet.drawRect(20, 20, 100, 150);
+graphicsFacet.drawRect(696, 630, 100, 150);
+
+let graphicsDiscard = new PIXI.Graphics();
+app.stage.addChild(graphicsDiscard);
+graphicsDiscard.beginFill(0xFF6887);
+graphicsDiscard.lineStyle(2, 0xFFFFFF);
+graphicsDiscard.drawRect(696, 122.5, 100, 150);
+graphicsDiscard.drawRect(20, 522.5, 100, 150);
 
 
 //Asset Containers
