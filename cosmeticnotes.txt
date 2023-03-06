@@ -1,0 +1,57 @@
+**Cosmetics Notes**
+~added by ob(nox)ious ^w^~
+
+MVP1 - 
+    
+    Basic screen structure
+        1. Background 
+            1. 1280 x 720
+            2. 854 x 480
+        2. Field mats 
+        3. Field boundaries 
+            1. Reflection card position
+            2. Facet card position 
+            3. Reflection deck position 
+            4. Main deck position 
+            5. Discard pile position 
+            6. Sprite gallery position
+        4. Cards 
+            1. Reflection deck 
+            2. Main deck 
+            3. Discard pile 
+            4. Hand 
+        5. UI 
+            1. Settings 
+                1. Volume
+                    1. BGM 
+                    2. SFX  
+                2. Display preferences
+
+    Basic styling guidelines
+        1. Background
+            1. Img, Gradient, or Color 
+        2. Mats
+            1. Img, Gradient, or Color
+            2. Rect with rounded edges (val: )
+                1. Outline color 
+            3. Shadows?
+        3. Boundaries 
+            1. Rects 
+                1. Reflection (deck and cards) - (0xFFFFFF)
+                2. Facet (deck and cards) - (0xFFFFFF)
+                3. Discard - (0xFFFFFF)
+                    (all outlined with (0xFFFFFF))
+            2. Rounded edges (val: )
+        4. Cards 
+            1. Rounded edges (val: )
+            2. Shadows on field ONLY !
+        5. UI 
+            1. Semi-transparent 
+            2. Gradient
+            3. Buttons 
+            4. LP (remaining RD number)
+            
+
+
+            
+
