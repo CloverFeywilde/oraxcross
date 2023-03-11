@@ -7,9 +7,10 @@
 
 //I just copied YTTD's aspect ratio. Will fix later
 //Nox's Notes! will be marked with an -N 
-let app = new PIXI.Application({ width: 816, height: 800, backgroundColor: 0x90a8c3});
+let app = new PIXI.Application({ width: 1280, height: 720, backgroundColor: 0xABC4FF});
 document.body.appendChild(app.view);
 
+/*legacy
 //separates the field into two. i will refer to the top field as OF (opponent's field) and PF (player field) -N
 let graphicsFieldLine = new PIXI.Graphics();
 app.stage.addChild(graphicsFieldLine);
@@ -50,6 +51,36 @@ graphicsDiscard.beginFill(0xFF6887);
 graphicsDiscard.lineStyle(2, 0xFFFFFF);
 graphicsDiscard.drawRect(696, 122.5, 100, 150);
 graphicsDiscard.drawRect(20, 522.5, 100, 150);
+*/
+
+let graphicsMats = new PIXI.Graphics();
+app.stage.addChild(graphicsMats);
+graphicsMats.beginFill(0xC1D3FE);
+graphicsMats.lineStyle(6, 0xB6CCFE); 
+graphicsMats.drawRoundedRect(200, 20, 880, 330, 10);
+graphicsMats.drawRoundedRect(200, 360, 880, 330, 10);
+
+let boundaries = new PIXI.Graphics();
+app.stage.addChild(boundaries);
+boundaries.lineStyle(5, 0xFFFFFF);
+boundaries.drawRoundedRect(575, 85, 130, 195, 5);
+boundaries.drawRoundedRect(575, 425, 130, 195, 5);
+boundaries.drawRoundedRect(275, 40, 195, 130, 5);
+boundaries.drawRoundedRect(275, 200, 195, 130, 5);
+boundaries.drawRoundedRect(805, 40, 195, 130, 5);
+boundaries.drawRoundedRect(805, 200, 195, 130, 5);
+boundaries.drawRoundedRect(275, 380, 195, 130, 5);
+boundaries.drawRoundedRect(275, 540, 195, 130, 5);
+boundaries.drawRoundedRect(805, 380, 195, 130, 5);
+boundaries.drawRoundedRect(805, 540, 195, 130, 5);
+boundaries.drawRoundedRect(35, 495, 130, 195, 5);
+boundaries.drawRoundedRect(35, 225, 130, 195, 5);
+boundaries.drawRoundedRect(35, 15, 130, 195, 5);
+boundaries.drawRoundedRect(1115, 510, 130, 195, 5);
+boundaries.drawRoundedRect(1115, 300, 130, 195, 5);
+boundaries.drawRoundedRect(1115, 20, 130, 195, 5);
+
+
 
 
 //Asset Containers
