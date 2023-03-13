@@ -82,6 +82,13 @@ boundaries.drawRoundedRect(1115, 20, 130, 195, 5);
 
 
 
+//Clover - center & scale field boundaries
+boundaries.position.x = (1280-(1275*.75))/2;
+boundaries.position.y = (720-(720*.75))/2;
+
+boundaries.scale.x = .75;
+boundaries.scale.y = .75; 
+
 
 //Asset Containers
 
