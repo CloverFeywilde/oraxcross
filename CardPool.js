@@ -127,3 +127,68 @@ const cardPool = {
         },
     },
 };
+
+
+
+let players = ['emiyo', 'michi', 'suzume'];
+let injuries = ['cut', 'bruise', 'scrape'];
+
+players.forEach(function (player, index) {
+    let numberOfInjuries = Math.floor(Math.random() * 3 + 1);
+    let selectedInjuries = [];
+
+    let message = player + ':';
+    for (var i = 0; i < numberOfInjuries; i++) {
+        let selectedInjuries = [];
+        let thisInjury;
+        
+        //keep picking injuries until we find one that hasn't been selected yet
+        do {
+          //grabs randomly from the injuries array and adds it to temp variable
+          thisInjury = injuries[Math.floor(Math.random() * injuries.length)];
+          selectedInjuries.push(thisInjury);
+        } while (!selectedInjuries.includes(thisInjury));
+        message = message + ' ' + thisInjury;
+    }
+    console.log(message); 
+});
+
+
+
+function injuryGenerator() {
+    let players = ['emiyo', 'michi', 'suzume'];
+    let injuries = ['cut', 'bruise', 'scrape', 'break'];
+    let locations = ['arm', 'leg', 'torso', 'finger'];
+
+    players.forEach(function (player, index) {
+        let numberOfInjuries = Math.floor(Math.random() * 3);
+        let selectedInjuries = [];
+        let selectedLocations = [];
+        let firstRun = true;
+
+        let message = player + ':';
+        for (var i = 0; i < numberOfInjuries; i++) {
+            let thisInjury;
+            let thisLocation;
+            let registered = false;
+            
+            //keep picking injuries until we find one that hasn't been selected yet
+            do {
+            //grabs randomly from the injuries array and adds it to temp variable
+            thisInjury = injuries[Math.floor(Math.random() * injuries.length)];
+            thisLocation = locations[Math.floor(Math.random() * locations.length)];
+
+            if (!selectedInjuries.includes(thisInjury) && !selectedLocations.includes(thisLocation)) {
+                selectedInjuries.push(thisInjury);
+                selectedLocations.push(thisLocation);
+                registered = true;
+            }
+            } while (!registered);
+            message = message + (firstRun ? ' ' : ', ') + thisInjury + ' on ' + thisLocation;
+            firstRun = false;
+        }
+        console.log(message); 
+    });
+};
+
+injuryGenerator();

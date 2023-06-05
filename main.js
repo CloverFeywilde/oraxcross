@@ -93,13 +93,18 @@ boundaries.scale.y = .75;
 //Asset Containers
 
 
-//Globals
-let state, tick;
 
-//Init functions
+//Globals
+//Todo: enclose this entire thing in a class so we can declare these variables as private
+//this prevents players from peeking into the game variable and cheating.
+let state, tick, game;
+
+//Setup for Entire Program
 function setup(){
     //setup goes here
-    state=play;
+    
+    //Refactor Later to include start menu logic
+    state=gameInit;
     tick=0
 }
 
@@ -111,14 +116,92 @@ app.ticker.add(function(delta){
 
 
 //Game States
-function play(){
-    //main method calls go here
-    if(tick<=30){
-        console.log('Snow: '+ tick);
-        tick++;
-    }
-
+function gameInit() {
+    game = new GameController();
+    game.coinToss();
+    game.openingHands();
+    state = openState;
 }
+
+function openState() {
+    //main control flow goes here
+    
+}
+
+function chainState() {};
+
+//Kickoff
 setup();
 
-//Play Functions
+
+
+//Data Structure
+
+class GameController {
+    player = [new Player(), new Player()];
+    turn;
+    phase;
+    state;
+
+    chainStack = [];
+
+    chainManager() {};
+    changePhase() {};
+}
+
+class Player {
+    lifePoints;
+
+    mainDeck = [];
+    reflectDeck = [];
+    hand = [];
+
+    //1-4 are facets top left to bottom right. 5 is the Reflection zone
+    field = [];
+    discardPile = [];
+    banishPile = [];
+
+    moveCards() {};
+    drawCards() {};
+    shuffleDeck() {};
+
+}
+
+class Card {
+    title;
+    text;
+    effect;
+    cardType;
+    art;
+}
+
+class CharmCard extends Card {
+
+}
+
+class HexCard extends Card {
+
+}
+
+class ReflectCard extends Card {
+
+}
+
+class FacetCard extends Card {
+
+}
+
+//effects should be kept as generic as possible:
+/*
+    Instead of:
+    reduceHitPoints() { } 
+    reduceMana() { }
+    reduceSpeed() { }
+
+    Do this:
+    reduce($attacker, $target, $reduceWhat, $amount) { }
+    massReduce($attacker, Array $targets, $reduceWhat, $amount) { }
+*/
+class EffectLibrary {
+
+}
